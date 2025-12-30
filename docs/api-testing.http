@@ -1,0 +1,11 @@
+### Test 1: Search recipes by meal name
+GET https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata
+
+### Test 2: Search recipes by ingredient
+GET https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken
+
+### Test 3: Get meal details by ID
+GET https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772
+
+### Test 4: Get random meal
+GET https://www.themealdb.com/api/json/v1/1/random. php
