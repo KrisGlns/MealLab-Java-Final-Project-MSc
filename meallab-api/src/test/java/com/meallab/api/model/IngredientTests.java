@@ -1,7 +1,7 @@
 package com.meallab.api.model;
 
 import org.junit.jupiter.api.Test;
-import static org.junit. jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /*
  * Unit tests for the Ingredient class.
