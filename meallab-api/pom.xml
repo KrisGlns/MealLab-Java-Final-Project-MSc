@@ -93,6 +93,34 @@
                 <version>3.2.3</version>
             </plugin>
 
+            <!--
+                JAR PLUGIN
+                Configures how the JAR file is created
+            -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.5.0</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            &lt;!&ndash; Add classpath to manifest &ndash;&gt;-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            &lt;!&ndash; Add Maven coordinates to manifest &ndash;&gt;-->
+<!--                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
+<!--                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>-->
+<!--                        </manifest>-->
+<!--                        <manifestEntries>-->
+<!--                            &lt;!&ndash; Custom manifest entries &ndash;&gt;-->
+<!--                            <Built-By>KrisGlns</Built-By>-->
+<!--                            <Build-Date>${maven.build.timestamp}</Build-Date>-->
+<!--                            <Project-Name>MealLab API</Project-Name>-->
+<!--                            <Description>REST API client for TheMealDB</Description>-->
+<!--                        </manifestEntries>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
         </plugins>
     </build>
 
