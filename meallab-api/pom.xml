@@ -7,14 +7,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--
-        PROJECT COORDINATES (GAV)
-        - groupId:  Typically reverse domain name (com.company.project)
-        - artifactId:  Project name (lowercase with hyphens)
-        - version: Project version (SNAPSHOT means in-development)
+        PARENT
+        Reference to the parent POM
     -->
-    <groupId>com.meallab</groupId>
+    <parent>
+        <groupId>com.meallab</groupId>
+        <artifactId>meallab-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <!--
+        MODULE COORDINATES
+        - groupId and version inherited from parent
+    -->
     <artifactId>meallab-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <!-- Packaging type:  jar (library), war (web app), or pom (parent project) -->
     <packaging>jar</packaging>
@@ -25,18 +32,13 @@
 
 
     <properties>
-        <!-- Java version we're using (v17 for compatibility, even though I have v25 installed on my machine) -->
-<!--        <maven.compiler.source>17</maven.compiler.source>-->
-<!--        <maven.compiler.target>17</maven.compiler.target>-->
-        <maven.compiler.release>17</maven.compiler.release>
-
-        <!-- Character encoding to prevent platform-dependent builds -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Dependency versions (easier to manage and update) -->
-        <junit.version>5.10.1</junit.version>
-        <jackson.version>2.16.1</jackson.version>
+        <!-- All properties inherited from parent -->
     </properties>
+
+    <!--
+    DEPENDENCIES
+    Versions managed by parent's dependencyManagement
+-->
 
     <dependencies>
 
@@ -48,7 +50,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <!-- Version is handled by parent pom -->
         </dependency>
 
         <!--
@@ -59,11 +61,16 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
+            <!-- Version IS handled by parent pom -->
         </dependency>
 
     </dependencies>
+
+    <!--
+        BUILD CONFIGURATION
+        Plugin versions managed by parent's pluginManagement
+    -->
 
     <build>
         <plugins>
@@ -75,12 +82,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-<!--                    <source>17</source>-->
-<!--                    <target>17</target>-->
-                    <release>17</release>
-                </configuration>
             </plugin>
 
             <!--
@@ -90,36 +91,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.3</version>
             </plugin>
-
-            <!--
-                JAR PLUGIN
-                Configures how the JAR file is created
-            -->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.5.0</version>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            &lt;!&ndash; Add classpath to manifest &ndash;&gt;-->
-<!--                            <addClasspath>true</addClasspath>-->
-<!--                            &lt;!&ndash; Add Maven coordinates to manifest &ndash;&gt;-->
-<!--                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
-<!--                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>-->
-<!--                        </manifest>-->
-<!--                        <manifestEntries>-->
-<!--                            &lt;!&ndash; Custom manifest entries &ndash;&gt;-->
-<!--                            <Built-By>KrisGlns</Built-By>-->
-<!--                            <Build-Date>${maven.build.timestamp}</Build-Date>-->
-<!--                            <Project-Name>MealLab API</Project-Name>-->
-<!--                            <Description>REST API client for TheMealDB</Description>-->
-<!--                        </manifestEntries>-->
-<!--                    </archive>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
 
         </plugins>
     </build>
